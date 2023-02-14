@@ -7,25 +7,28 @@ const Counter = () => {
 
   // automatically sets up a subscription for this component (changes to counter state will re-execute this component)
   const counter = useSelector((state) => state.counter); //retrieves the part of the state which we extract (in this case counter)
+  const show = useSelector((state) => state.showCounter);
 
   const incrementHandler = () => {
     dispatch({ type: 'increment' });
   };
 
   const increaseHandler = () => {
-    dispatch({ type: 'increase', amount: 10 }); //an extra payload/data
+    dispatch({ type: 'increase', amount: 10 }); //attaching a payload to an action
   };
 
   const decrementHandler = () => {
     dispatch({ type: 'decrement' });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: 'toggle' });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseHandler}>Increment by 10</button>
