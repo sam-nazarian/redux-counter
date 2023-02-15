@@ -8,8 +8,8 @@ const Counter = () => {
   const dispatch = useDispatch(); // returns a function
 
   // automatically sets up a subscription for this component (changes to counter state will re-execute this component)
-  const counter = useSelector((state) => state.counter); //retrieves the part of the state which we extract (in this case counter)
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter); //retrieves the part of the state which we extract (in this case counter)
+  const show = useSelector((state) => state.counter.showCounter); //go to counter slice, then get the showCounter from that state slice
 
   const incrementHandler = () => {
     //creates a full action object with type set to the unique indentifer which points to increment() in reducer
